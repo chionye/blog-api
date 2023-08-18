@@ -99,7 +99,7 @@ const UserController = {
         User.delete(id, (err: Error, result: RowDataPacket) => {
             if(err) return res.status(400).send({ message: err.message });
             
-            return res.status(200).send({ message: "User deleted successfully", userData: result});
+            return res.status(200).send({ message: "User deleted successfully"});
         })
     },
 }
