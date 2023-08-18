@@ -1,6 +1,6 @@
 CREATE TABLE `blog`.`blog_posts` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
-  `title` VARCHAR(75) NOT NULL,
+  `title` TEXT NOT NULL,
   `content` TEXT NULL DEFAULT NULL,
   `published` TINYINT(1) NOT NULL DEFAULT 0,
   `createdAt` DATETIME NOT NULL,
