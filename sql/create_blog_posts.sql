@@ -1,0 +1,10 @@
+DROP TABLE IF EXISTS `blog_posts`;
+CREATE TABLE `blog`.`blog_posts` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(75) NOT NULL,
+  `content` TEXT NULL DEFAULT NULL,
+  `published` TINYINT(1) NOT NULL DEFAULT 0,
+  `createdAt` DATETIME NOT NULL,
+  `updatedAt` DATETIME NULL DEFAULT NULL,
+  `publishedAt` DATETIME NULL DEFAULT NULL,
+  PRIMARY KEY (`id`));
