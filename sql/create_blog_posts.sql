@@ -1,4 +1,3 @@
-DROP TABLE IF EXISTS `blog_posts`;
 CREATE TABLE `blog`.`blog_posts` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(75) NOT NULL,
