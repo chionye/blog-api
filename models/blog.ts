@@ -1,4 +1,4 @@
-import {db} from "../config/db.config";
+import {db} from "../config/db";
 import { RowDataPacket, ResultSetHeader } from "mysql2";
 import { BlogPostsProp } from './../types/blog_posts';
 
@@ -29,8 +29,6 @@ export const Blog = {
         const searchParam = Object.keys(user).join(" LIKE ? OR ") + " LIKE ?";
         const values = Object.values(user).map((search) => "%"+search+"%");
         const str = `SELECT * FROM blog_posts WHERE ${searchParam}`;
-
-        // console.log(str, values);
         
         db.query<RowDataPacket[]>(str, values, (err, result) => {
             if (err) callback(err)

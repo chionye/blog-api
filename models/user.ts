@@ -1,4 +1,4 @@
-import {db} from "../config/db.config";
+import {db} from "../config/db";
 import { UsersProp } from "../types/user";
 import { RowDataPacket, ResultSetHeader } from "mysql2";
 

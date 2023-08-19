@@ -1,21 +1,20 @@
 import * as dotenv from 'dotenv'
-import express from "express";
-import * as bodyParser from "body-parser";
+import express, { Application } from "express";
+import serverless from 'serverless-http';
 import { UserRouter } from './routes/user';
 import { BlogRouter } from './routes/blog';
+import swaggerUi from "swagger-ui-express";
+import { swaggerSpec } from "./utils/swagger";
 
 dotenv.config();
-const app = express();
+const app: Application = express();
 const port = process.env.PORT;
 
 app.use(express.json());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
+
+
 app.use("/users", UserRouter);
 app.use("/posts", BlogRouter);
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-app.listen(port, () => {
-    console.log(`server running on port ${port}`);
-});
+export default serverless(app);
