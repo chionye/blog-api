@@ -1,0 +1,14 @@
+org: chionye
+app: serverless-blog-project
+service: blog
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+
+functions:
+  api:
+    handler: app.handler
+    events:
+      - httpApi: '*'

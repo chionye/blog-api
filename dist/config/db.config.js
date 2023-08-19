@@ -26,19 +26,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.db = void 0;
+const mysql2_1 = __importDefault(require("mysql2"));
 const dotenv = __importStar(require("dotenv"));
-const express_1 = __importDefault(require("express"));
-const bodyParser = __importStar(require("body-parser"));
-const users_1 = require("./routes/users");
 dotenv.config();
-const app = (0, express_1.default)();
-const port = process.env.PORT;
-app.use(express_1.default.json());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
-app.use("/users", users_1.router);
-app.listen(port, () => {
-    console.log(`server running on port ${port}`);
+exports.db = mysql2_1.default.createConnection({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PWD,
+    database: process.env.DB_NAME
 });
